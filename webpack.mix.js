@@ -12,4 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix
-   .js('resources/js/calender.js', 'public');
+   .js('resources/js/calender.js', 'public')
+   .js('resources/js/enquiries.js', 'public');
