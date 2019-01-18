@@ -22,7 +22,7 @@
         <p v-if="isOpen"></p>
         <p><button type="button" class="btn" v-on:click="isOpen = !isOpen">All New Appointments</button>
 
-            <div v-if="isHidden = !isHidden">
+            <div v-if="isOpen">
 
 
                 <h3> Here are all your new appointments!</h3>
@@ -32,7 +32,7 @@
                     <li>@{{customer.number}}</li>
                     <li>@{{customer.AppointmentTimeDate}}</li>
 
-                    <button type="button" v-on:click="deleteEnquiry(customer.id)">Delete</button>
+                    <button type="button" @click="deleteEnquiry(customer.id)">Delete</button>
 
                     <button id="btn">Contact @{{customer.name}}</button><br>
 

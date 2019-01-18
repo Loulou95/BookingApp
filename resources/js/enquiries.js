@@ -13,7 +13,8 @@ var app = new Vue({
     clients: {},
     submitted: false,
     isHidden: false,
-    isOpen: false
+    isOpen: false,
+    deleteWithSplice: true,
  },
 
 mounted() {
@@ -46,6 +47,9 @@ methods: {
 
     },
 
+    deleteTodo: function(todoId) {
+},
+
     toggle: function(){
         this.isOpen = !this.isOpen
     },
@@ -53,9 +57,20 @@ methods: {
     deleteEnquiry (id){
         console.log('123')
          console.log(id)
+
          axios.delete('/Enquiries/'+id)
-        .then(function (response) {
+
+        .then( (response) => {
         //     // handle success
+        //delete that.customers[id]
+        //that.$set(that.customers, {}, that.customers)
+
+        for (let [index, customer] of this.customers.entries()) {
+            if (customer.id === id) {
+                this.customers.splice(index, 1)
+                this.isOpen = true
+            }
+        }
         console.log (response.data);
            })
 
